@@ -4,6 +4,7 @@
       <div class="left_cv">
         <div class="box_img">
           <img
+            class="p-4 custom-image-cv"
             :src="'http://127.0.0.1:8000/' + data.cv.images"
             alt=""
             style="width: 100%"
@@ -18,12 +19,14 @@
               <p v-if="data.cv.status != data.CheckUser">**************</p>
             </div>
             <div class="mail">
-              <i class="fa-solid fa-envelope"></i>
+             
+              <i class="fa-solid fa-phone"></i>
               <p v-if="data.cv.status == data.CheckUser">{{ data.cv.phone }}</p>
               <p v-if="data.cv.status != data.CheckUser">*****************</p>
             </div>
             <div class="mail">
-              <i class="fa-solid fa-envelope"></i>
+              <i class="fa-solid fa-location-dot"></i>
+              
               <p v-if="data.cv.status == data.CheckUser">
                 {{ data.cv.address }}
               </p>
@@ -32,7 +35,7 @@
               </p>
             </div>
             <div class="mail">
-              <i class="fa-solid fa-envelope"></i>
+              <i class="fa-solid fa-user"></i>
               <p v-if="data.cv.status == data.CheckUser">
                 <a :href="data.cv.link_fb">{{ data.cv.link_fb }}</a>
               </p>
@@ -177,7 +180,6 @@ export default {
   color: #284350;
   background: white;
 }
-
 .box_cv .mt {
   margin: 40px 0;
 }
@@ -208,19 +210,19 @@ export default {
   height: auto;
   width: 100%;
   color: #bbbdbf;
-  background: #284350;
+  /* background: #284350; */
   padding: 10px;
 }
 
 .left_cv .box_img {
   width: 100%;
   margin-bottom: 10px;
-  border: 3px solid #ffc628;
-  height: 300px;
+  /* border: 3px solid #ffc628; */
+  /* height: 300px; */
 }
 
 .left_cv .box_img > img {
-  border: 3px solid #ffc628;
+  /* border: 3px solid #ffc628; */
 }
 
 .left_cv > .contact {
