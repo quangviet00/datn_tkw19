@@ -3,109 +3,59 @@
 @endphp
 @extends('client.layout.index')
 @section('client')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <body>
-        <div class="home-banner margin-bottom-0" style="background:#00ab46 url(assets/img/banner-5.jpg) no-repeat;"
-            data-overlay="5">
+        <div class="home-banner margin-bottom-0" style="background:#00ab46 url('banner-bg.jpg')" data-overlay="5">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="banner_caption text-center mb-5">
-                            <h1 class="banner_title ft-bold mb-1">Khám phá hơn 10k+ việc làm</h1>
-                            <p class="fs-md ft-medium">Xin chào các bạn, Công việc mơ ước của bạn đang chờ đợi ở thành phố
-                                địa phương của bạn</p>
-                        </div>
                         <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                    <form action="{{ route('home.search') }}" method="GET" class="bg-white rounded p-1">
-                                        <div class="row no-gutters">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                                <div class="form-group mb-0 position-relative">
-                                                    <input type="text" class="form-control lg left-ico"
-                                                        placeholder="Job Title, Keyword or Company" name="key" />
-                                                    <i class="bnc-ico lni lni-search-alt"></i>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group mb-0 position-relative">
-                                                    <select class="custom-select lg b-0 " style="width: auto;"
-                                                        name="skill[]">
-                                                        @foreach ($skill as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->label }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group mb-0 position-relative">
-                                                    <select class="custom-select lg b-0" name="location">
-                                                        <option selected disabled>Địa chỉ</option>
-                                                        @foreach ($location as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->label }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
-                                                <div class="form-group mb-0 position-relative">
-                                                    <button
-                                                        class="btn full-width custom-height-lg theme-bg text-white fs-md"
-                                                        type="submit">Find Job</button>
-                                                </div>
-                                            </div>
+                            <div class="col-lg-12">
+                                <form id="search-form" action="{{ route('home.search') }}" name="gs" method="submit"
+                                    role="search">
+                                    <div class="row">
+                                        <div class="col-lg-3 align-self-center">
+                                            <fieldset>
+                                                <input type="address" name="key" class="searchText"
+                                                    placeholder="Tìm Kiêm..." autocomplete="on">
+                                            </fieldset>
                                         </div>
-                                    </form>
-
-                                </div>
+                                        <div class="col-lg-3 align-self-center">
+                                            <fieldset>
+                                                <select class="form-select" name="majors">
+                                                    <option selected disabled>Chuyên Ngành</option>
+                                                    @foreach ($majors as $item)
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-3 align-self-center">
+                                            <fieldset>
+                                                <select class="form-select" name="location">
+                                                    <option selected disabled>Địa chỉ</option>
+                                                    @foreach ($location as $item)
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->label }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <fieldset>
+                                                <button class="main-button"><i class="fa fa-search"></i> Tìm Kiếm</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="imployer-explore">
-            <div class="impl-thumb">
-                <img src="assets/img/microsoft-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/paypal-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/serv-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/mothercare-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/xerox-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/yahoo-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/serv-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/mothercare-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/xerox-home.png" class="" alt="" />
-            </div>
-            <div class="impl-thumb">
-                <img src="assets/img/yahoo-home.png" class="" alt="" />
-            </div>
-        </div>
-        <!-- ======================= Home Banner ======================== -->
-
-        <!-- ======================= Job List ======================== -->
         <section class="middle space gray">
             <div class="container border" style="background: #ffff">
                 <div class="container container-header-box border ">
@@ -167,8 +117,8 @@
                                         <div class="row">
                                             <div class="job_grid_thumb mb-3 title-name px-3 col-4">
                                                 <a href="home/detail/{{ $value->title . '-' . $value->id }}"
-                                                    class="d-block m-auto"><img src="{{ $value->logo }}"
-                                                        class="img-fluid" alt="" /></a>
+                                                    class="d-block m-auto"><img src="{{ $value->logo }}" class="img-fluid"
+                                                        alt="" /></a>
                                             </div>
                                             <div class="job_grid_caption title-name px-3 col-8 g-1">
                                                 <h4 class="mb-0 ft-medium medium ml-20">
@@ -259,11 +209,13 @@
                                         "></i>
                                                             </a>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" style="height: 80px;">
                                                             <div class="job_grid_thumb mb-3 title-name px-3 col-4">
                                                                 <a href="home/detail/{{ $value->title . '-' . $value->id }}"
                                                                     class="d-block m-auto"><img src="{{ $value->logo }}"
-                                                                        class="img-fluid" alt="" /></a>
+                                                                        class="img-rounded"
+                                                                        style="width: 70% !important; height: 70% !important"
+                                                                        alt="" /></a>
                                                             </div>
                                                             <div class="job_grid_caption title-name px-3 col-8 g-1">
                                                                 <h4 class="mb-0 ft-medium medium ml-20">
@@ -438,43 +390,6 @@
             </div>
         </section>
         <!-- ======================= Newsletter Start ============================ -->
-        <section class="space bg-cover" style="background:#03343b url(assets/img/landing-bg.png) no-repeat;">
-            <div class="container py-5">
-
-                <div class="row justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="sec_title position-relative text-center mb-5">
-                            <h6 class="text-light mb-0">Subscribr Now</h6>
-                            <h2 class="ft-bold text-light">Get All New Job Notification</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 col-12">
-                        <form class="bg-white rounded p-1">
-                            <div class="row no-gutters">
-                                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8">
-                                    <div class="form-group mb-0 position-relative">
-                                        <input type="text" class="form-control lg left-ico"
-                                            placeholder="Enter Your Email Address">
-                                        <i class="bnc-ico lni lni-envelope"></i>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
-                                    <div class="form-group mb-0 position-relative">
-                                        <button class="btn full-width custom-height-lg theme-bg text-light fs-md"
-                                            type="button">Subscribe
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </section>
         <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
         <!-- Button trigger modal -->
         <!-- Modal login -->
@@ -541,6 +456,7 @@
                     </div>
                 </div>
             </div>
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <script type="text/javascript">
                 $(document).ready(function() {
