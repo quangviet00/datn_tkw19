@@ -14,7 +14,8 @@
                                     <label class=" px-md-0 me-md-3">Quản Lý Đăng Tin</label>
                                     <ul class="header-nav ms-3 d-flex">
                                         <search-cv-date :url="{{ json_encode(route('employer.new.index')) }}"
-                                            :data-query="{{ json_encode(!empty($request) ? $request->all() : new stdClass()) }}">
+                                            :data-query="{{ json_encode(!empty($request) ? $request->all() : new stdClass()) }}"
+                                            :data="{{ json_encode(1) }}">
                                         </search-cv-date>
                                         @if ($checkCompany->id_company && $checkCompanyStatus == 1)
                                             <a class="nav-link py-0 btn-next-step"
@@ -43,7 +44,6 @@
                                             <th scope="col"> Trạng Thái</th>
                                             <th scope="col">Số lượng hồ sơ đã nhân</th>
                                             <th scope="col"> Thời gian bắt đầu</th>
-                                            <th scope="col">Kết thúc</th>
                                             <th scope="col">Thời gian còn lại</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -64,7 +64,6 @@
                                                 </td>
                                                 <td>{{ count($item->AllCv) }}</td>
                                                 <td>{{ $item->job_time }}</td>
-                                                <td>{{ Carbon::parse($item->end_job_time)->format('Y-m-d') }}</td>
                                                 <td>
 
                                                     @if (Carbon::parse($item->end_job_time)->format('m') == $m)
