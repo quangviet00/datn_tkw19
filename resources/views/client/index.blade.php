@@ -5,7 +5,7 @@
 @section('client')
 
     <body>
-        <div class="home-banner margin-bottom-0" style="background:#00ab46 url('banner-bg.jpg')" data-overlay="5">
+        <div class="home-banner margin-bottom-0" style="background:#00ab46 url('company.jpg')" data-overlay="5">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
