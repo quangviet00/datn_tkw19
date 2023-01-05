@@ -135,9 +135,10 @@ class HomeController extends BaseController
         }
         $majors = Majors::all();
 
-        $new = News::all();
+        $new = News::select('id','new_image','describe','majors')->paginate(3);
         return view('client.index', [
             'majors' => $majors,
+            'title' => 'Home',
             'profestion' => $this->getprofession(),
             'lever' => $this->getlever(),
             'experience' => $this->getexperience(),
