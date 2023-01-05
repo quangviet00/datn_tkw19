@@ -17,6 +17,9 @@
                                         data-target="#exampleModallogin">
                                         <i class="lni lni-user"></i>Đăng
                                         nhập</button></fieldset>
+                                {{-- <a href="/login" class="main-button" >
+                                    <i class="lni lni-user"></i>Đăng
+                                    nhập</a> --}}
                             </li>
                             <li>
                                 <a href="dashboard-post-job.html" class="main-button">
@@ -45,8 +48,8 @@
                 <ul class="nav-menu">
                     <li><a href="{{ route('index') }}">Lĩnh vực</a>
                         <ul class="nav-dropdown nav-submenu">
-                            {{-- @foreach ($majors as $item)
-                                <li><a href="tim-viec-lam?majors={{ $item->id }}">{{ $item->name }}</a>
+                            @foreach ($majors as $item)
+                                <li><a href="{{ route('searchMajors', $item->id) }}">{{ $item->name }}</a>
                                 </li>
                             @endforeach --}}
                         </ul>
