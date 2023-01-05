@@ -280,7 +280,7 @@
                               :name="'project[' + index + ']'"
                             />
                             <Editor
-                              :name="'project[ ' + index + ' ]'"
+                              :name="'project_detail[ ' + index + ' ]'"
                               v-model="model.project_detail"
                               class="
                                 form-control
@@ -342,8 +342,6 @@ import Toggle from '@vueform/toggle'
 import '@vueform/toggle/themes/default.css'
 import { localize } from '@vee-validate/i18n'
 import * as rules from '@vee-validate/rules'
-import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
 import $ from 'jquery'
 export default {
   setup() {
@@ -358,8 +356,7 @@ export default {
     Field,
     ErrorMessage,
     Toggle,
-    Editor,
-    mavonEditor
+    Editor
   },
   props: ['data'],
   data: function () {
@@ -377,8 +374,8 @@ export default {
       ],
       experience_cv_info: [
         {
-          experience: '',
-          title_experience: ''
+          project: '',
+          project_detail: ''
         }
       ],
       numberForm: 1,
@@ -455,12 +452,13 @@ export default {
     },
     addFormExperience() {
       this.experience_cv_info.push({
-        skill: '',
-        title_skill: ''
+        project: '',
+        project_detail: ''
       })
       this.numberFormExperience += 1
     },
     deleteItemexperience(index) {
+      console.log(index)
       this.experience_cv_info.splice(index, 1)
     }
   }
@@ -472,30 +470,38 @@ export default {
   border: 2px dashed #f5e63f;
   height: 30px !important;
 }
+
 .cus-tom-input-skill {
   margin-top: 5px !important;
   width: 200px !important;
   height: 35px !important;
 }
+
 .wrapper-item {
   margin-top: 20px;
 }
+
 .cus-tom-ckediter-cv {
   display: block !important;
   margin-top: 10px !important;
 }
+
 .cus-tom-ckediter-cv:hover {
   border: 2px dashed #f5e63f;
 }
+
 .form-control:hover {
   border: 2px dashed #f5e63f;
 }
+
 .tox-tinymce {
   visibility: hidden !important;
 }
+
 .input-skill {
   width: 700px !important;
 }
+
 .custum-box-image-cv {
   height: 350px !important;
 }
