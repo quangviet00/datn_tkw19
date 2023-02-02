@@ -156,12 +156,20 @@ class HomeController extends BaseController
         } else {
             $job = $jobForUser;
         }
-        $majors = Majors::with('majors')->get();
+        $majorsALL = Majors::with('majors')->get();
 
         $new = News::select('id', 'title', 'profession_id', 'new_image', 'describe', 'majors', 'created_at')->paginate(4);
-
+        $totalSeeker = User::select('id')->where('status', 2)
+            ->count('id');
+        $totalEmployer = User::select('id')->where('status', 2)
+            ->where('role_id', '=', 2)
+            ->count('id');
+        $totalJob = Job::count();
         return view('client.index', [
-            'majors' => $majors,
+            'majorsALL' => $majorsALL,
+            'totalJob' => $totalJob,
+            'totalSeeker' => $totalSeeker,
+            'totalEmployer' => $totalEmployer,
             'title' => 'Tuyển dung, tìm việc làm nhanh 24h',
             'profestion' => $this->getprofession(),
             'lever' => $this->getlever(),
@@ -170,7 +178,7 @@ class HomeController extends BaseController
             'skill' => $this->getskill(),
             'timework' => $this->gettimework(),
             'profession' => $this->getprofession(),
-            'majors' => $this->majors->get(),
+            'majors' => $this->getmajors(),
             'workingform' => $this->getworkingform(),
             'location' => $this->getlocation(),
             'user' => $user ?? '',
@@ -183,7 +191,7 @@ class HomeController extends BaseController
                 ->where([
                     ['job.status', 1],
                     ['job.expired', 0],
-                    ['employer.position', 0],
+                    ['job.package_id_position', 0],
                 ])
                 ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany')
                 ->orderBy('employer.prioritize', 'desc')
@@ -409,11 +417,16 @@ class HomeController extends BaseController
                 $cvUpload->save();
             }
         }
-        $user = $this->job->join('employer', 'employer.id', '=', 'job.employer_id')
+        $emailCompany = $this->job->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('users', 'users.id', '=', 'employer.user_id')
             ->select('users.email as email')->first();
-        $mailContents = $mailUpCv->name;
-        Mail::to($user->mail)->send(new MailNotifyCV($mailContents));
+        $firstJob = $this->job->where([
+            ['id', $request->id_job],
+        ])->first();
+        $mailContents = [
+            'job' => $firstJob
+        ];
+        Mail::to($emailCompany->email)->send(new MailNotifyCV($mailContents));
 
         $this->setFlash(__('Hãy chờ phản hồi của nhà tuyển dụng'));
         return redirect()->back();
