@@ -161,14 +161,16 @@
                                                             display: -webkit-box;
                                                             text-align: left;">{{ $value->title }}</span>
                                                         </a>
-                                                        <div
-                                                            style=" -webkit-line-clamp: 1;
+                                                        <div>
+
+                                                            <span
+                                                                style=" -webkit-line-clamp: 1;
                                                             -webkit-box-orient: vertical;
                                                             overflow: hidden;
                                                             text-overflow: ellipsis;
                                                             display: -webkit-box;
-                                                            text-align: justify;">
-                                                            <span class="location-small custom-text-company"><a
+                                                            text-align: justify;"
+                                                                class="location-small custom-text-company"><a
                                                                     href="">{{ $value->nameCompany }}</a></span>
                                                         </div>
                                                     </div>
