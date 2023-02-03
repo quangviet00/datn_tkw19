@@ -461,16 +461,19 @@
                                                             <div class="card-grid-2 grid-bd-16 hover-up">
                                                                 <div class="card-block-info pt-25">
                                                                     <h6
-                                                                        style=" display: -webkit-box;
-                                                                                                     line-height: 1;
-                                                                                                    -webkit-line-clamp: 1;
-                                                                                                    -webkit-box-orient: vertical;
-                                                                                                    overflow: hidden;
-                                                                                                    text-overflow: ellipsis;">
+                                                                        style=" 
+                                                                        display: -webkit-box;
+                                                                             line-height: 1;
+                                                                             -webkit-line-clamp: 1;
+                                                                             -webkit-box-orient: vertical;
+                                                                             overflow: hidden;
+                                                                             text-overflow: ellipsis;
+                                                                             height: 17px;">
                                                                         <a
                                                                             href="home/detail/{{ $item->id }}">{{ $item->title }}</a>
 
                                                                     </h6>
+
                                                                     <div class="d-flex flex-wrap gap-15 mt-5">
                                                                         <span><i
                                                                                 class="fi-rr-briefcase ms-0 me-5"></i>{{ $item->getTime_work->name }}</span>
@@ -488,27 +491,34 @@
                                                                                         style="width: 35px; height: 35px"
                                                                                         alt="Ashford">
                                                                                     <div class="info-right-img">
-                                                                                        <h6 style=" display: -webkit-box;
-                                                                                                     line-height: 1;
-                                                                                                    -webkit-line-clamp: 1;
-                                                                                                    -webkit-box-orient: vertical;
-                                                                                                    overflow: hidden;
-                                                                                                    text-overflow: ellipsis;"
-                                                                                            class="color-brand-1 lh-14 mb-0">
-                                                                                            <a
-                                                                                                href="{{ route('detail.company', $item->idCompany) }}">{{ $item->nameCompany }}</a>
-                                                                                        </h6>
+                                                                                        <span
+                                                                                            style=" -webkit-line-clamp: 1;
+                                                                                        -webkit-box-orient: vertical;
+                                                                                        overflow: hidden;
+                                                                                        text-overflow: ellipsis;
+                                                                                        display: -webkit-box;
+                                                                                        text-align: justify; 
+                                                                                        width: 150px !important;
+                                                                                       ">
+                                                                                            <h6
+                                                                                                class="color-brand-1 lh-14 mb-0 ">
+                                                                                                <a
+                                                                                                    href="{{ route('detail.company', $item->idCompany) }}">{{ $item->nameCompany }}</a>
+                                                                                            </h6>
+                                                                                        </span>
+
                                                                                         <span
                                                                                             class="card-location font-xxs pl-15 color-text-paragraph-2 custom-text-company custom-text-location-company ml-2">
-                                                                                            <p>Hà
-                                                                                                nội</p>
+                                                                                            <p>Hà nội</p>
+
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class=" col-md-6 text-end">
+
+                                                                            <div class=" col-md-6 text-end " style=" margin-top: 15px">
                                                                                 <span
-                                                                                    class="card-text-price">{{ $item->getwage->name }}</span>
+                                                                                    class="card-text-price ">{{ $item->getwage->name }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -703,7 +713,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
